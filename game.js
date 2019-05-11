@@ -15,7 +15,11 @@ var helloWorldText = Crafty.e('2D, DOM, Text')
     .attr({
         x: 100,
         y: 100
+    })
+    .textFont({
+        size: '20px',
+        weight: 'bold'
     });
-helloWorldText.textFont({
-    size: '20px'
-});
+
+
+
