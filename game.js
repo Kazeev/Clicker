@@ -1,12 +1,21 @@
 
 Crafty.init(300,300, document.getElementById('game'));
 
-Crafty.e('Floor, 2D, Canvas, Color')
-    .attr({x: 0, y: 250, w: 250, h: 10})
-    .color('green');
+var count = 0;
 
-Crafty.e('2D, Canvas, Color, Twoway, Gravity')
-    .attr({x: 0, y: 0, w: 50, h: 50})
-    .color('#F00')
-    .twoway(200)
-    .gravity('Floor');
+var myEntity = Crafty.e('2D, Canvas, Color, Mouse')
+    .attr({x: 10, y: 10, w: 40, h: 40})
+    .color('red')
+    .bind('Click', function(MouseEvent){
+        helloWorldText.text("Count clic: " + count);
+        count = count+1;
+    });
+
+var helloWorldText = Crafty.e('2D, DOM, Text')
+    .attr({
+        x: 100,
+        y: 100
+    });
+helloWorldText.textFont({
+    size: '20px'
+});
