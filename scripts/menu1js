@@ -1,0 +1,48 @@
+var current_work = "none";
+var context = [5];
+
+function view_menu() {
+    menu();
+    button_menu(app.screen.height/2 - 50,100,"Lol",0);
+    button_menu(app.screen.height/2 - 50,200,"Lol",1);
+    button_menu(app.screen.height/2 - 50,300,"Lol",2);
+    button_menu(app.screen.height/2 - 50,400,"Lol",3);
+    button_menu(app.screen.height/2 - 50,600,"Output",4);
+
+}
+
+function button_menu(x, y, text, index) {
+    const button = new PIXI.Graphics();
+    button.beginFill( 0xFCF500, 1);
+    button.drawRoundedRect(x, y, 300, 50, 15);
+
+    button.endFill();
+
+    button.interactive = true;
+    button.buttonMode = true;
+    app.stage.addChild(button);
+    context[index] = button;
+    button.on('pointerdown', onBtnClick(context[index]));
+
+}
+
+
+function onBtnClick(index) {
+    console.log(index);
+    app.stage.removeChild(index);
+
+}
+
+function getCurrentWork() {
+    return current_work;
+}
+
+function menu() {
+    //button_game(false);
+    const window_menu = new PIXI.Graphics();
+    window_menu.beginFill(0x70E0F2);
+    window_menu.drawRect(0, 0, app.screen.width, app.screen.height);
+    window_menu.endFill();
+    app.stage.addChild(window_menu);
+
+}
